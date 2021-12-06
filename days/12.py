@@ -1,4 +1,5 @@
-filename = "input"
+#!/usr/bin/env python
+filename = "./inputs/day1.txt"
 
 measurements = []
 with open(filename) as f:

@@ -1,8 +1,11 @@
-def check_numbers_expanded(bingo_numbers, boards, marker = 'XX'):
+#!/usr/bin/env python
+filename = "./inputs/day4.txt"
+
+def check_numbers(bingo_numbers, boards, marker = 'XX'):
     
     called_numbers = []
     # mark called numbers
-    for n, num in enumerate(bingo_numbers):
+    for num in bingo_numbers:
         called_numbers.append(num) 
 
         for k, board in enumerate(boards):
@@ -26,17 +29,7 @@ def check_numbers_expanded(bingo_numbers, boards, marker = 'XX'):
                         for _row in _board:
                             print(" ".join(_row))
                         print("\n")
-
-                    print(f"Winner: Board {k} with last called number {num}.")
-                    board_score = 0
-                    for row in boards[k]:
-                        print(" ".join(row))
-                        for col in row:
-                            if col != marker:
-                               board_score += int(col)
-
-                    board_score = board_score * int(num)
-                    return [called_numbers, k, j, board_score, n]
+                    return [called_numbers, k, i]
 
                 # check column for bingo
                 for r_count in r_hits:
@@ -46,21 +39,9 @@ def check_numbers_expanded(bingo_numbers, boards, marker = 'XX'):
                             for _row in _board:
                                 print(" ".join(_row))
                             print("\n")
-
-                        print(f"Winner: Board {k} with last called number {num}.")
-                        board_score = 0
-                        for row in boards[k]:
-                            print(" ".join(row))
-                            for col in row:
-                                if col != marker:
-                                    board_score += int(col)
-
-                        board_score = board_score * int(num)
-                        return [called_numbers, k, j, board_score, n]
+                        return [called_numbers, k, j]
         
     return "No winners."
-
-filename = "input"
 
 _board = []
 boards = []
@@ -81,11 +62,14 @@ bingo_nums = boards[0][0]
 boards = boards[1:]
 
 marker = 'XX'
-while len(boards) > 0:
-    winner = check_numbers_expanded(bingo_nums, boards, marker)
-    boards = [boards[i] for i, board in enumerate(boards) if i != winner[1]]
-    bingo_nums = bingo_nums[winner[4]-1:]
-    print(f"Amount of boards left: {len(boards)}")
+winner = check_numbers(bingo_nums, boards, marker)
+print(f"Winner: Board {winner[1]} with last called number {winner[0][-1]}.")
+board_score = 0
+for row in boards[winner[1]]:
+    print(" ".join(row))
+    for col in row:
+        if col != marker:
+            board_score += int(col)
 
-print(f"Final score: {winner[3]}")
+print(f"Final score: {board_score} * {int(winner[0][-1])} = {board_score * int(winner[0][-1])}")
 

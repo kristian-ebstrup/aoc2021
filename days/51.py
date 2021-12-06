@@ -1,4 +1,5 @@
-filename = "input"
+#!/usr/bin/env python
+filename = "./inputs/day5.txt"
 
 thermal_ranges = []
 with open(filename) as f:

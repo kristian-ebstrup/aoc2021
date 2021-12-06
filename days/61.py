@@ -1,4 +1,5 @@
-filename = 'input'
+#!/usr/bin/env python
+filename = "./inputs/day6.txt"
 
 # import timer string
 timers = []
@@ -25,4 +26,7 @@ for t in range(t_start, t_end):
         if timers[i] < 0:
             timers.append(8)
             timers[i] = 6
-    print(f"Amount of lanternfish at t = {t + 1} days: {len(timers)}", end="\n")
+    if t == t_end - 1:
+        print(f"Amount of lanternfish at t = {t + 1} days: {len(timers)}", end="\n")
+    else:
+        print(f"Amount of lanternfish at t = {t + 1} days: {len(timers)}", end="\r")

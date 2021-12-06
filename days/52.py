@@ -1,4 +1,5 @@
-filename = "input"
+#!/usr/bin/env python
+filename = "./inputs/day5.txt"
 
 thermal_ranges = []
 with open(filename) as f:
@@ -13,7 +14,7 @@ thermal_map = {}
 for element in thermal_ranges:
     # Boolean to control the mapping loop
     diagonal_line = False
--
+
     # straight lines
     if element[0][0] == element[1][0]:
         x_range = [int(element[0][0])]

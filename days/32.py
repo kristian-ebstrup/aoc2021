@@ -1,4 +1,5 @@
-filename = "input"
+#!/usr/bin/env python
+filename = "./inputs/day3.txt"
 
 entries = []
 with open(filename) as f:

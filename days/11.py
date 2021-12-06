@@ -1,4 +1,5 @@
-filename = "input"
+#!/usr/bin/env python
+filename = "./inputs/day1.txt"
 
 count = 0
 line_count = 0
