@@ -68,7 +68,7 @@ for signal in unprocessed_signals:
     for i in [3, 4, 5]:
         remainder = list(set(unique_displays[-1]) - set(unique_displays[i]))
         for num in remainder:
-            if num != segments['c'] and num != segments['f'] and num != segments['e'] and num in remaining_letters:
+            if num in remaining_letters:
                 segments['b'] = num
                 remaining_letters = list(set(remaining_letters) - set(num))
     
